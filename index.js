@@ -41,7 +41,8 @@ var done = function() {
         object[0][mod.toString()] = [output.modules[mod].total_code ? output.modules[mod].total_code.toString() : "0", output.modules[mod].ocurrences.toString(), verdict];
         table.push(object[0]);
     }
-
+    console.log('your project is ' + output.total_code + ' lines of code');
+    console.log('this is how you did...');
     console.log(table.toString());
 };
 

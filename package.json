@@ -1,8 +1,11 @@
 {
   "name": "npm-what",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "are you really using node modules properly?",
   "main": "index.js",
+  "bin": {
+    "npm-what": "bin/npm-what"
+  },
   "scripts": {},
   "repository": {
     "type": "git",
