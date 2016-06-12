@@ -1,0 +1,19 @@
+{
+  "name": "npm-what",
+  "version": "0.0.0",
+  "description": "are you really using node modules properly?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielcsapo/npm-what.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielcsapo/npm-what/issues"
+  },
+  "homepage": "https://github.com/gabrielcsapo/npm-what#readme"
+}
