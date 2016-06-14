@@ -20,6 +20,15 @@ pretty simple it finds the amount of code that your project consists of, then it
 
 `npm-what -d {path to project directory}`
 
+## Key
+
+| Emoji    |  Explanation | What should you do |
+|----------|:-------------:|------:|
+| 🖕 |  you aren't even referencing this module | install this globally not explicitly in the project |
+| 🙄 |    this is less than a hundred lines of code  | grab the parts you need, ditch the package |
+| 🔨 | needs some work, but referenced enough times to mandate use | you should contribute to this project |
+| 👏 | congratulations 👍| Cool you use modules... |
+
 ## Output
 
 > this is an example using npm 3.9.3 as a test
