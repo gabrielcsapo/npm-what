@@ -33,8 +33,9 @@ pretty simple it finds the amount of code that your project consists of, then it
 
 > this is an example using npm 3.9.3 as a test
 
+`npm-what -d /npm`
+
 ```
-parsing [====================================================================]
 info: So lets see how you did...
 info: your project is 43130 lines of code
 info: your project has 80 modules
