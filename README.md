@@ -2,6 +2,12 @@
 
 are you really using node modules properly?
 
+[![Npm Version](https://img.shields.io/npm/v/npm-what.svg)](https://www.npmjs.com/package/npm-what)
+[![Dependency Status](https://david-dm.org/gabrielcsapo/npm-what.svg)](https://david-dm.org/gabrielcsapo/npm-what)
+[![devDependency Status](https://david-dm.org/gabrielcsapo/npm-what/dev-status.svg)](https://david-dm.org/gabrielcsapo/npm-what#info=devDependencies)
+[![npm](https://img.shields.io/npm/dt/npm-what.svg)]()
+[![npm](https://img.shields.io/npm/dm/npm-what.svg)]()
+
 ## What is this?
 
 pretty simple it finds the amount of code that your project consists of, then it finds the amount of code used by all of your dependencies and gives you a grade based on how well you are using that dependency
