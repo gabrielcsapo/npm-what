@@ -1,12 +1,14 @@
 {
   "name": "npm-what",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "are you really using node modules properly?",
   "main": "index.js",
   "bin": {
     "npm-what": "bin/npm-what"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "./node_modules/.bin/eslint ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielcsapo/npm-what.git"
@@ -21,6 +23,7 @@
     "cli-table": "^0.3.1",
     "cloc": "^2.0.0",
     "commander": "^2.9.0",
-    "depcheck": "^0.6.3"
+    "depcheck": "^0.6.3",
+    "winston": "^2.2.0"
   }
 }
