@@ -2,11 +2,18 @@ var fs = require('fs');
 var path = require('path');
 var depcheck = require('depcheck');
 var exec = require('child_process').exec;
-var directory = process.env.DIRECTORY || process.cwd();
 var Table = require('cli-table');
+var program = require('commander');
+var directory;
+
+program
+    .version(require('./package.json').version)
+    .option('-d, --directory [path]', 'determine the name of the directory you want to look at')
+    .parse(process.argv);
+
+directory = path.resolve(program.directory) || process.env.DIRECTORY || process.cwd();
 
 var cmd = './node_modules/.bin/cloc ' + directory + ' --exclude-dir=node_modules';
-
 // yeah I stole this from `./node_modules/.bin/cloc --show-lang`
 var supported_languages = ["BAP","ActionScript","Ada","ADSO/IDSM","AMPLE","Ant","Apex Trigger","Arduino Sketch","ASP","ASP.Net","AspectJ","Assembly","AutoHotkey","awk","Bourne Again Shell","Bourne Shell","C","C Shell","C#","C++","C/C++ Header","CCS","Clojure","ClojureC","ClojureScript","CMake","COBOL","CoffeeScript","ColdFusion","ColdFusion CFScript","Coq","Crystal","CSON","CSS","CUDA","Cython","D","DAL","Dart","diff","DITA","DOORS Extension Language","DOS Batch","DTD","dtrace","ECPP","EEx","Elixir","Elm","ERB","Erlang","Expect","F#","Focus","Forth","Fortran 77","Fortran 90","Fortran 95","GDScript","Go","Grails","Groovy","Haml","Handlebars","Harbour","Haskell","HLSL","HTML","IDL","InstallShield","Java","JavaScript","JavaServer Faces","JCL","JSON","JSP","Julia","Kermit","Korn Shell","Kotlin","LESS","lex","Lisp","LiveLink OScript","Lua","m4","make","MATLAB","Maven","Modula3","MSBuild script","MUMPS","Mustache","MXML","NAnt script","NASTRAN DMAP","Nemerle","Objective C","Objective C++","OCaml","OpenCL","Oracle Forms","Oracle Reports","Pascal","Pascal/Puppet","Patran Command Language","Perl","PHP","PHP/Pascal","Pig Latin","PL/I","PowerBuilder","PowerShell","Prolog","Protocol Buffers","PureScript","Python","QML","Qt","Qt Project","R","Racket","Razor","Rexx","RobotFramework","Ruby","Ruby HTML","Rust","SAS","SASS","Scala","sed","SKILL","SKILL++","Smarty","Softbridge Basic","SQL","SQL Data","SQL Stored Procedure","Standard ML","Stylus","Swift","Tcl/Tk","Teamcenter met","Teamcenter mth","Titanium Style Sheet","Twig","TypeScript","Unity-Prefab","Vala","Vala Header","Velocity Template Language","Verilog-SystemVerilog","VHDL","vim script","Visual Basic","Visual Fox Pro","Visualforce Component","Visualforce Page","Windows Message File","Windows Module Definition","Windows Resource File","WiX include","WiX source","WiX string localization","XAML","xBase","xBase Header","XHTML","XMI","XML","XQuery","XSD","XSLT","yacc","YAML","zsh"];
 // we will use this eventually
@@ -28,13 +35,14 @@ var done = function() {
         if(output.modules[mod].total_code) {
             if (output.modules[mod].ocurrences == 0) {
                 verdict = "...you are an asshole...";
-            }
-            if(output.modules[mod].total_code < 100) {
-                verdict = "You are an asshole, what does this gain?";
-            } else if(output.modules[mod].total_code / output.modules[mod].ocurrences < 500) {
-                verdict = "Do you contribute to this module? you probably should, dick";
             } else {
-                verdict = "Hey, * pretends to highfive * you are still an asshole";
+                if(output.modules[mod].total_code < 100) {
+                    verdict = "You are an asshole, what does this gain?";
+                } else if(output.modules[mod].total_code / output.modules[mod].ocurrences < 500) {
+                    verdict = "Do you contribute to this module? you probably should, dick";
+                } else {
+                    verdict = "Hey, * pretends to highfive * you are still an asshole";
+                }
             }
         }
         var object = [{}];
@@ -78,6 +86,7 @@ exec(cmd, function(error, stdout, stderr) {
             output.total_code = parseSum(out);
         }
     });
+
     var package = JSON.parse(fs.readFileSync(path.resolve(directory, 'package.json')));
     output.modules_raw = Object.keys(package.dependencies ? package.dependencies : {});
     var step = output.modules_raw.length;

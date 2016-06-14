@@ -12,7 +12,7 @@ pretty simple it finds the amount of code that your project consists of, then it
 
 ## Usage
 
-`DIRECTORY={path to project directory} npm-what`
+`npm-what -d {path to project directory}`
 
 ## Output
 
