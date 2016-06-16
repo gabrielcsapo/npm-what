@@ -2,9 +2,10 @@ var fs = require('fs');
 var path = require('path');
 var depcheck = require('depcheck');
 var exec = require('child_process').exec;
+var cloc = require('cloc/package.json'); // eslint-disable-line no-unused-vars
 var Table = require('cli-table');
 var program = require('commander');
-var winston = require('winston');
+var logger = require('winston');
 var ProgressBar = require('progress');
 var directory;
 
@@ -23,12 +24,13 @@ var output = {
     total_code: "",
     stats: "",
     languages: [],
+    package: {},
     modules_raw: [], // this is a list of all depdencies explicitly defined
     modules_stats: {}, // this is the depcheck response
     modules: {} // this is where the real stuff goes
 };
 var done = function() {
-    winston.info('So lets see how you did...');
+    logger.info('So lets see how you did...');
 
     var table = new Table({
         head: ["", "LOC", "Ocurrences", "Verdict"]
@@ -50,13 +52,14 @@ var done = function() {
             }
         }
         var object = [{}];
-        object[0][mod.toString()] = [output.modules[mod].total_code ? output.modules[mod].total_code.toString() : "0", output.modules[mod].ocurrences.toString(), verdict];
+        var version = output.package.dependencies[mod] || output.package.devDependencies[mod];
+        object[0][mod.toString() + '@' + version] = [output.modules[mod].total_code ? output.modules[mod].total_code.toString() : "0", output.modules[mod].ocurrences.toString(), verdict];
         table.push(object[0]);
     }
-    winston.info('your project is ' + output.total_code + ' lines of code');
-    winston.info('your project has ' + Object.keys(output.modules).length + ' modules');
-    winston.info('this is how you did...');
-    winston.info('\n' + table.toString());
+    logger.info('your project is ' + output.total_code + ' lines of code');
+    logger.info('your project has ' + Object.keys(output.modules).length + ' modules');
+    logger.info('this is how you did...');
+    logger.info('\n' + table.toString());
 };
 
 var parseSum = function(out) {
@@ -94,9 +97,10 @@ exec(cmd, function(error, stdout) {
         }
     });
 
-    var package = JSON.parse(fs.readFileSync(path.resolve(directory, 'package.json')));
-    output.modules_raw = Object.keys(package.dependencies ? package.dependencies : {}) || [];
-    output.modules_raw = output.modules_raw.concat(Object.keys(package.devDependencies ? package.devDependencies : {}) || []);
+    var _package = JSON.parse(fs.readFileSync(path.resolve(directory, 'package.json')));
+    output.package = _package;
+    output.modules_raw = Object.keys(_package.dependencies ? _package.dependencies : {}) || [];
+    output.modules_raw = output.modules_raw.concat(Object.keys(_package.devDependencies ? _package.devDependencies : {}) || []);
     var step = output.modules_raw.length;
     var bar = new ProgressBar('parsing [:bar]', {
         total: step
@@ -111,6 +115,9 @@ exec(cmd, function(error, stdout) {
     }
     finish(); // short the call stack if we have zero dependencies, by the default it would be 0...
     depcheck(directory, {}, function(unused) {
+        for (var key in unused.invalidFiles) {
+            logger.error('\n' + key + ' : ' + unused.invalidFiles[key].toString());
+        }
         output.modules_stats = unused.using;
         output.modules_raw.forEach(function(mod) {
             output.modules[mod] = {
