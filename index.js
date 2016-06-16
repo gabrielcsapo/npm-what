@@ -3,7 +3,7 @@ var path = require('path');
 var depcheck = require('depcheck');
 var exec = require('child_process').exec;
 var cloc = require('cloc/package.json'); // eslint-disable-line no-unused-vars
-var Table = require('cli-table');
+var Table = require('markdown-table');
 var program = require('commander');
 var logger = require('winston');
 var ProgressBar = require('progress');
@@ -32,9 +32,7 @@ var output = {
 var done = function() {
     logger.info('So lets see how you did...');
 
-    var table = new Table({
-        head: ["", "LOC", "Ocurrences", "Verdict"]
-    });
+    var table = [["Module", "LOC", "Ocurrences", "Verdict"]];
 
     for (var mod in output.modules) {
         var verdict = "What is this?";
@@ -51,15 +49,18 @@ var done = function() {
                 }
             }
         }
-        var object = [{}];
+        var object = [];
         var version = output.package.dependencies[mod] || output.package.devDependencies[mod];
-        object[0][mod.toString() + '@' + version] = [output.modules[mod].total_code ? output.modules[mod].total_code.toString() : "0", output.modules[mod].ocurrences.toString(), verdict];
-        table.push(object[0]);
+        object.push(mod.toString() + '@' + version)
+        object.push(output.modules[mod].total_code ? output.modules[mod].total_code.toString() : "0")
+        object.push(output.modules[mod].ocurrences.toString())
+        object.push(verdict);
+        table.push(object);
     }
     logger.info('your project is ' + output.total_code + ' lines of code');
     logger.info('your project has ' + Object.keys(output.modules).length + ' modules');
     logger.info('this is how you did...');
-    logger.info('\n' + table.toString());
+    logger.info('\n' + Table(table));
 };
 
 var parseSum = function(out) {
