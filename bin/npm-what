@@ -17,7 +17,7 @@ require('../index')(directory, function(output) {
 
     for (var mod in output.modules) {
         var object = [];
-        var version = output.package.dependencies[mod] || output.package.devDependencies[mod];
+        var version = output.package.dependencies ? output.package.dependencies[mod] : output.package.devDependencies ? output.package.devDependencies[mod] : '?';
         object.push(mod.toString() + '@' + version)
         object.push(output.modules[mod].total_code ? output.modules[mod].total_code.toString() : "0")
         object.push(output.modules[mod].ocurrences.toString())
