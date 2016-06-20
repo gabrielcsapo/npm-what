@@ -1,6 +1,6 @@
 {
   "name": "npm-what",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "are you really using node modules properly?",
   "main": "index.js",
   "bin": {
