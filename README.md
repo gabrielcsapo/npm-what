@@ -1,6 +1,6 @@
 # npm-what
 
-are you really using node modules properly?
+> are you really using node modules properly?
 
 [![Npm Version](https://img.shields.io/npm/v/npm-what.svg)](https://www.npmjs.com/package/npm-what)
 [![Dependency Status](https://david-dm.org/gabrielcsapo/npm-what.svg)](https://david-dm.org/gabrielcsapo/npm-what)
