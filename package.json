@@ -22,7 +22,7 @@
   "dependencies": {
     "cloc": "^2.0.0",
     "commander": "^2.9.0",
-    "depcheck": "^0.6.3",
+    "depcheck": "^0.6.4",
     "express": "^4.14.0",
     "markdown-table": "^0.4.0",
     "node-flat-db": "^0.2.1",
