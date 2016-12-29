@@ -18,7 +18,15 @@ pretty simple it finds the amount of code that your project consists of, then it
 
 ## Usage
 
-`npm-what -d {path to project directory}`
+```
+Usage: npm-what [options]
+
+Options:
+
+  -h, --help              output usage information
+  -V, --version           output the version number
+  -d, --directory [path]  determine the name of the directory you want to look at
+```
 
 ## Key
 
