@@ -9,17 +9,17 @@ program
     .parse(process.argv);
 
 var directory = program.directory ? path.resolve(program.directory) : process.env.DIRECTORY || process.cwd();
-console.log(directory);
+
 require('../index')(directory, function(output) {
     logger.info('So lets see how you did...');
 
-    var table = [["Module", "LOC", "Ocurrences", "Verdict"]];
+    var table = [['Module', 'LOC', 'Ocurrences', 'Verdict']];
 
     for (var mod in output.modules) {
         var object = [];
         var version = output.package.dependencies ? output.package.dependencies[mod] : output.package.devDependencies ? output.package.devDependencies[mod] : '?';
         object.push(mod.toString() + '@' + version)
-        object.push(output.modules[mod].total_code ? output.modules[mod].total_code.toString() : "0")
+        object.push(output.modules[mod].total_code ? output.modules[mod].total_code.toString() : '0')
         object.push(output.modules[mod].ocurrences.toString())
         object.push(output.modules[mod].verdict);
         table.push(object);
