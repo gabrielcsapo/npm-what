@@ -51,7 +51,7 @@ app.get('/*.svg', function(req, res) {
             }
             return acc;
         }, {});
-        var verdict = "";
+        var verdict = '';
         for (var r in raw) {
             verdict += r + ' : ' + raw[r] + ' ';
         }
@@ -61,7 +61,7 @@ app.get('/*.svg', function(req, res) {
             color: 'rgb(115, 175, 255)'
         };
         var badge = swig.renderFile(path.join(__dirname, 'badge.svg'), params);
-        res.writeHead(200, {"Content-Type": "image/svg+xml"})
+        res.writeHead(200, {'Content-Type': 'image/svg+xml'})
         res.write(badge);
     });
 });
