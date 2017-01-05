@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/tap test --coverage",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -31,11 +33,13 @@
     "simple-git": "^1.65.0",
     "swig": "^1.4.2",
     "underscore": "^1.8.3",
-    "winston": "^2.3.0"
+    "winston": "^2.3.0",
+    "snyk": "^1.23.1"
   },
   "devDependencies": {
     "eslint": "^3.12.2",
     "tap": "^8.0.1",
     "tape": "^4.6.3"
-  }
+  },
+  "snyk": true
 }
