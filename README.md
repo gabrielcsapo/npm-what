@@ -1,4 +1,6 @@
 # npm-what
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/npm-what.svg)](https://greenkeeper.io/)
 > are you really using node modules properly?
 
 [![Npm Version](https://img.shields.io/npm/v/npm-what.svg)](https://www.npmjs.com/package/npm-what)
