@@ -2,6 +2,7 @@
 var Table = require('markdown-table');
 var program = require('commander');
 var logger = require('winston');
+var path = require('path');
 
 program
     .version(require('../package.json').version)
