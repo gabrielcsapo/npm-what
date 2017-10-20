@@ -2,7 +2,10 @@ before_install:
   - "npm install npm@4 -g"
 language: node_js
 script:
-  - npm run test
+  - npm install lcov-server -g
+  - npm run lint
+  - npm run coverage
+  - cat coverage/lcov.info | lcov-server --upload https://lcov-server.gabrielcsapo.com
 node_js:
   - "4"
   - "5"

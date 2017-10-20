@@ -3,11 +3,11 @@
 > are you really using node modules properly?
 
 [![Npm Version](https://img.shields.io/npm/v/npm-what.svg)](https://www.npmjs.com/package/npm-what)
-[![Dependency Status](https://david-dm.org/gabrielcsapo/npm-what.svg)](https://david-dm.org/gabrielcsapo/npm-what)
-[![devDependency Status](https://david-dm.org/gabrielcsapo/npm-what/dev-status.svg)](https://david-dm.org/gabrielcsapo/npm-what#info=devDependencies)
+[![Coverage Status](https://lcov-server.gabrielcsapo.com/badge/github%2Ecom/gabrielcsapo/npm-what.svg)](https://lcov-server.gabrielcsapo.com/coverage/github%2Ecom/gabrielcsapo/npm-what)
+[![Dependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/npm-what/status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/npm-what)
+[![devDependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/npm-what/dev-status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/npm-what#info=devDependencies)
 [![npm](https://img.shields.io/npm/dt/npm-what.svg)]()
 [![npm](https://img.shields.io/npm/dm/npm-what.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/gabrielcsapo/npm-what/badge.svg?branch=master)](https://coveralls.io/github/gabrielcsapo/npm-what?branch=master)
 
 ## What is this?
 
