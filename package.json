@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "tape test",
-    "coverage": "tap test --coverage"
+    "coverage": "tap test --coverage --coverage-report=lcov"
   },
   "repository": {
     "type": "git",
