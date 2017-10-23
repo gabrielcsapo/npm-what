@@ -1,5 +1,3 @@
-before_install:
-  - "npm install npm@4 -g"
 language: node_js
 script:
   - npm install lcov-server -g

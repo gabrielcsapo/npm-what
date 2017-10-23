@@ -1,6 +1,6 @@
 {
   "name": "npm-what",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "are you really using node modules properly?",
   "main": "index.js",
   "bin": {
@@ -22,15 +22,16 @@
   },
   "homepage": "https://github.com/gabrielcsapo/npm-what#readme",
   "dependencies": {
-    "cloc": "^2.2.0",
+    "cloc": "^2.3.2",
     "commander": "^2.11.0",
-    "depcheck": "^0.6.7",
+    "depcheck": "^0.6.8",
     "markdown-table": "^1.1.1",
-    "winston": "^2.3.1"
+    "progress": "^2.0.0",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
-    "eslint": "^4.2.0",
-    "tap": "^10.7.0",
-    "tape": "^4.6.3"
+    "eslint": "^4.9.0",
+    "tap": "^10.7.2",
+    "tape": "^4.8.0"
   }
 }
