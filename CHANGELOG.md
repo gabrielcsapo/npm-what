@@ -1,3 +1,10 @@
+# 1.0.0 (12/12/2017)
+
+- npmWhat now returns a promise
+- outputs better error messages instead of just throw and killing the process
+- fixes `parseSum` to give real line counts
+- fixes problem parsing the versions for devDependency
+
 # 0.2.3 (10/23/2017)
 
 - installs progress locally module which will error out if progress is not installed globally

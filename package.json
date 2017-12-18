@@ -1,15 +1,16 @@
 {
   "name": "npm-what",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "🔍 are you really using node modules properly?",
   "main": "index.js",
   "bin": {
-    "npm-what": "bin/npm-what"
+    "npm-what": "bin/npm-what.js"
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "tape test",
-    "coverage": "tap test --coverage --coverage-report=lcov"
+    "test": "tape test/**.js",
+    "coverage": "tap test --coverage --coverage-report=lcov",
+    "generate-docs": "tryitout"
   },
   "repository": {
     "type": "git",
@@ -23,15 +24,14 @@
   "homepage": "https://github.com/gabrielcsapo/npm-what#readme",
   "dependencies": {
     "cloc": "^2.3.2",
-    "commander": "^2.11.0",
     "depcheck": "^0.6.8",
     "markdown-table": "^1.1.1",
-    "progress": "^2.0.0",
-    "winston": "^2.4.0"
+    "ora": "^1.3.0"
   },
   "devDependencies": {
-    "eslint": "^4.9.0",
-    "tap": "^10.7.2",
-    "tape": "^4.8.0"
+    "eslint": "^4.13.1",
+    "tap": "^11.0.0",
+    "tape": "^4.8.0",
+    "tryitout": "^1.2.2"
   }
 }
